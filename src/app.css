@@ -1,0 +1,125 @@
+/* app.css - basic styling for DecayLog Write Mode */
+
+:root {
+  --bg:#f7f7f7;
+  --card:#fff;
+  --muted:#666;
+  --accent:#111;
+}
+
+html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: var(--bg); color: #111; }
+
+/* layout */
+.app { display: grid; grid-template-columns: 300px 1fr; gap: 18px; height: 100vh; padding: 18px; box-sizing: border-box; }
+
+.panel { background: var(--card); border-radius: 10px; padding: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); display:flex; flex-direction:column; gap:12px; }
+.workbench { background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,250,0.95)); border-radius:10px; padding: 22px; box-shadow: 0 6px 22px rgba(0,0,0,0.07); overflow:hidden; }
+
+/* grid-paper look */
+.grid-paper {
+  background-color: white;
+  background-image:
+    linear-gradient(0deg, rgba(0,0,0,0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.14) 1px, transparent 1px);
+  background-size: 28px 28px, 28px 28px;
+  padding: 26px;
+  min-height: 70vh;
+  box-sizing: border-box;
+  border-radius: 8px;
+  /* a subtle paper texture tint (optional) */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* typing area (handwriting) */
+.typing-area {
+  min-height: 56vh;
+  outline: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 26px;
+  color: #0b0b0b;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  padding: 12px;
+  border-radius: 6px;
+  /* subtle paper background to help placeholder contrast */
+  background: transparent;
+  -webkit-text-fill-color: #0b0b0b;
+  caret-color: #000;
+}
+
+/* placeholder for contenteditable */
+.typing-area:empty:before {
+  content: attr(data-placeholder);
+  color: rgba(0,0,0,0.46);
+  pointer-events: none;
+  display: block;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 18px;
+}
+
+/* fade animation for clearing */
+@keyframes decayFade {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(6px) scale(0.995); }
+}
+.decay-fade {
+  animation: decayFade 0.7s forwards;
+}
+
+/* small helpers */
+.muted { color: var(--muted); font-size: 13px; }
+.footer-note { font-size: 13px; color: #333; opacity: 0.85; }
+
+/* button */
+.btn { background: #000; color: #fff; padding: 8px 12px; border-radius: 8px; cursor: pointer; border: none; font-weight: 600; }
+
+/* responsive */
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; padding: 12px; }
+  .panel { order: 2; }
+}
+
+.labnote {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: transparent;
+}
+
+.note-title {
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  padding: 6px;
+  background: transparent;
+}
+
+.note-date {
+  font-size: 16px;
+  font-style: italic;
+  border-bottom: 1px solid #333;
+  padding: 4px;
+  background: transparent;
+}
+
+.typing-area {
+  flex: 1;
+  min-height: 56vh;
+  padding: 12px;
+  font-size: 18px;
+  line-height: 1.5;
+  background: transparent;
+  outline: none;
+}
+
+
+.note-title:empty:before,
+.note-date:empty:before,
+.typing-area:empty:before {
+  content: attr(placeholder);
+  color: #888;
+  pointer-events: none;
+  font-style: italic;
+}
