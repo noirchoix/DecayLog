@@ -1,6 +1,7 @@
+# Node
 node_modules
 
-# Output
+# SvelteKit output
 .output
 .vercel
 .netlify
@@ -21,3 +22,40 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+.Python
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+
+# Python packaging / build
+dist/
+build/
+*.egg-info/
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+# Logs / cache
+*.log
+.cache/
+.pytest_cache/
+.mypy_cache/
+.pyre/
+
+# Audio files
+*.mp3
+
+# pdf files
+*.pdf
+*.docx
